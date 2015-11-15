@@ -1,0 +1,51 @@
+<head>
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Tic Tac Toe</h1>
+      <p style="text-align:left;">{{to_move}}<span style="float:right;">{{message}}</span></p>
+    </header>
+
+    <table class="tictactoe center">
+      <tr>
+	{{#each squares 0}}
+	  {{> square}}
+	{{/each}}
+      </tr>
+      <tr>
+	{{#each squares 1}}
+	  {{> square}}
+	{{/each}}
+      </tr>
+      <tr>
+	{{#each squares 2}}
+	  {{> square}}
+	{{/each}}
+      </tr>
+    </table>
+    {{> reset}}
+  </div>
+</body>
+
+<template name="task">
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked"/>
+    <span class="text">{{text}}</span>
+  </li>
+</template>
+
+<template name="square">
+  <td {{td_attributes x y}}>
+    <span class="token">{{t}}</span>
+  </td>
+</template>
+
+<template name="reset">
+  <div class="reset center-text">
+    <button>Reset board</button>
+  </div>
+</template>
